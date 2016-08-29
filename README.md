@@ -1,5 +1,5 @@
 # IMNGS-toolbox
-There are simple scripts that can be useful to anyone working with IMNGS
+This is a list of simple scripts that were created to primarily assist users of IMNGS but can also be used independently. 
 
 ### The list currently include:
 ### - Perplexor

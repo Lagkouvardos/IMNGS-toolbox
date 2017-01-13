@@ -26,7 +26,7 @@ open (my $barcodes_fh,"<",$barcodesfilename) || die "Cannot open \"$barcodesfile
 my @barcodes;
 while(my $barcode_line = <$barcodes_fh>)
 {
-   chomp $barcode_line;
+   $barcode_line =~ s/\s+\z//;
    push (@barcodes,$barcode_line);
 }
 
@@ -46,7 +46,7 @@ print $mappings_fh "#SampleID\tIndex\n";
 my $pairnumber=0;
 while (my $pair_line= <$pairs_fh>)
 {
-  chomp $pair_line;
+  $pair_line =~ s/\s+\z//;
   if ($pair_line=~/^#/) { next;}  
   my ($sample_name,$forward_filename,$reverse_filename) = split (/\t/,$pair_line);
   open (my $forward_fh,"<","./$files_folder/$forward_filename") || die "Cannot open \"$forward_filename\" to read from: $!";
@@ -85,7 +85,7 @@ sub getfastq
   for (my $x=0;$x<4;$x++)
   {
     my $line = <$filehandler>;
-    chomp $line;
+    $line =~ s/\s+\z//;
     push (@entry,$line);
   }
   return (@entry);

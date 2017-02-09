@@ -1,0 +1,1 @@
+Please add files you whant trimmed here. Only files ending in fastq will be processed.

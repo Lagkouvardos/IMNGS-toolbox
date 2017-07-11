@@ -3,4 +3,6 @@ This is a list of simple scripts that were created to primarily assist users of 
 
 ### The list currently include:
 ### - Perplexor
-### - Trimata
+#### Demultiplexor
+#### Remultiplexor
+### - Trimmata

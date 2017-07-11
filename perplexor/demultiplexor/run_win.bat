@@ -1,7 +1,8 @@
 REM Demultiplexing Samples from a study
 REM Please select the apropriate values for the variables MAP, I1, I2, R1 and R2.
 REM If your study was sequenced using one barcode then delete the line SET I2 = ""
-REM Also remove the 
+REM Also remove the command that doesnot corespond to the settings.
+
 SET OUT=./Samples
 SET MAP="mapping.txt"
 SET I1="I1.fastq"

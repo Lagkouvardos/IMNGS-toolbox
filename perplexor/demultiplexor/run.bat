@@ -1,11 +1,16 @@
-#!/bin/bash          
-echo Hello World
-OUT=./Samples
-MAP="DH.txt"
-I1="DH-I1.fastq"
+REM Demultiplexing Samples from a study
+REM Please select the apropriate values for the variables MAP, I1, I2, R1 and R2.
+REM If your study was sequenced using one barcode then delete the line SET I2 = ""
+REM Also remove the 
+SET OUT=./Samples
+SET MAP="mapping.txt"
+SET I1="I1.fastq"
+SET I2="I2.fastq"
+SET R1="R1.fastq"
+SET R2="R2.fastq"
 
-R1="DH-R1.fastq"
-R2="DH-R2.fastq"
- 
-demultiplexor_v4.pl --out $OUT --paired --map $MAP --I1 $I1  --R1 $R1 --R2 $R2 --accept 1
+REM Use this for single barcode runs (Delete the other command)
+demultiplexor_v4.pl --out %OUT% --paired --map %MAP% --I1 %I1%  --R1 %R1% --R2 %R2% --accept 2
 
+REM Use this for double barcoded runs (Delete the other command)
+demultiplexor_v4.pl --out %OUT% --paired --2index --map %MAP% --I1 %I1%  --I2 %I2% --R1 %R1% --R2 %R2% --accept 2

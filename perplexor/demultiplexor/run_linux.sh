@@ -1,5 +1,5 @@
 #!/bin/bash          
-echo Hello World
+echo Demultiplexing samples from a study
 OUT=./Samples
 MAP="DH.txt"
 I1="DH-I1.fastq"

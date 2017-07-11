@@ -18,7 +18,7 @@ sub load_map_file;
 sub demultiplex;
 
 #typical usage 
-#system "$perl_path/demultiplexor_v4.pl --out $pathout --paired --2index --map $mapfilename --I1 $reverseIndexFilename  --I2 $forwardIndexFilename --R1 $forwardReadFilename --R2 $reverseReadFilename --accept $allow_error";
+#system "$perl_path/demultiplexor.pl --out $pathout --paired --2index --map $mapfilename --I1 $reverseIndexFilename  --I2 $forwardIndexFilename --R1 $forwardReadFilename --R2 $reverseReadFilename --accept $allow_error";
 
 ################################################################################
 ##############################  VARIABLES  #####################################

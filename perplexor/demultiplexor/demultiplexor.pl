@@ -18,7 +18,7 @@ sub load_map_file;
 sub demultiplex;
 
 #typical usage 
-#system "$perl_path/demultiplexor_v3.pl --out $pathout --paired --2index --map $mapfilename --I1 $reverseIndexFilename  --I2 $forwardIndexFilename --R1 $forwardReadFilename --R2 $reverseReadFilename --accept $allow_error";
+#system "$perl_path/demultiplexor_v4.pl --out $pathout --paired --2index --map $mapfilename --I1 $reverseIndexFilename  --I2 $forwardIndexFilename --R1 $forwardReadFilename --R2 $reverseReadFilename --accept $allow_error";
 
 ################################################################################
 ##############################  VARIABLES  #####################################
@@ -438,7 +438,7 @@ sub usage()
 {
 print<<EOF;
 
-******************** demultiplexor_v3.pl ver 3.0 **************************
+******************** demultiplexor.pl ver 4.0 **************************
 **************** Illumina fastq file demultiplexer ************************
     Copyright (C) 2015  I. Lagkouvards (ilias.lagkouvardos\@tum.de)
 
@@ -447,7 +447,7 @@ in the same run.
 
 
 Usage:
-predemultiplexor.pl [--out PATH] [--map FILENAME] [--paired] [--2index]
+demultiplexor.pl [--out PATH] [--map FILENAME] [--paired] [--2index]
                     [--I1 FILE] [--I2 FILE] [--R1 FILE]
                     [--R2 FILE] [--accept INDIGER] [--help]
  

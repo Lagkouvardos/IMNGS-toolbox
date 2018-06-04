@@ -12,7 +12,9 @@ use warnings;
 
 #Declare variables
 my $barcodesfilename = "barcodes.txt";
+fixEOL ($barcodesfilename);
 my $demultiplexed_pairs = "multiplexing_table.tab";
+fixEOL ($demultiplexed_pairs);
 my $I1_filename= "I1.fastq";
 my $R1_filename= "R1.fastq";
 my $R2_filename= "R2.fastq";
@@ -101,6 +103,25 @@ sub printfastq
   }  
 }
 
+#
+# Converts LF, CR and CRLF line endings to the local line ending.
+#
+# Usage:
+#    fixEOL( $filename)
+sub fixEOL
+{
+  my ($filename)= @_;
+  my $filedata = do
+  {
+    open (my $filehandle, '<', "$filename") or die $!;
+    local $/;
+    <$filehandle>;
+  };
+  $filedata =~ s/\x0A|\x0D\x0A?/\n/g;
+  
+  open (my $filehandle, '>', "$filename") or die $!;
+  print $filehandle $filedata;  
+}
 
 
 

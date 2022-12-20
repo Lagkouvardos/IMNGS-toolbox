@@ -39,17 +39,26 @@ foreach my $filename (@dirlist)
         open (my $inseq_fh,"<","$pathin/$filename") || die "Could not open file $filename to read. $!";
         open (my $out_fh,">","$pathout/$filename") || die "Could not open file $filename to write. $!";
         print "Trimming of file $filename ...";
-        while (!eof)
+        while (eof($inseq_fh) ne 1)
         {
             my @entry = getfastq($inseq_fh);
-            my $length = length $entry[1];        
-            $entry[1] = substr $entry[1], $forward_trim, $length -$forward_trim -$reverse_trim;
-            $entry[3] = substr $entry[3], $forward_trim, $length -$forward_trim -$reverse_trim;
-            printfastq($out_fh,@entry);
+            my $length = length $entry[1];
+			
+			if ($length>$maxlength)
+			{
+				$entry[1] = substr $entry[1], $forward_trim, $maxlength -$forward_trim -$reverse_trim;
+				$entry[3] = substr $entry[3], $forward_trim, $maxlength -$forward_trim -$reverse_trim;
+				printfastq($out_fh,@entry);
+			}
+			elsif ($length > $minlength)
+			{
+				$entry[1] = substr $entry[1], $forward_trim, $length -$forward_trim -$reverse_trim;
+				$entry[3] = substr $entry[3], $forward_trim, $length -$forward_trim -$reverse_trim;
+				printfastq($out_fh,@entry);
+			}
         }
         print "done.\n";
     }
-
 }
 ($sec,$min,$hour)=gmtime;
 print "\nOperation completed succesfully at: $hour :$min :$sec\n";

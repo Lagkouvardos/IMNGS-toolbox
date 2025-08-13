@@ -44,18 +44,10 @@ foreach my $filename (@dirlist)
             my @entry = getfastq($inseq_fh);
             my $length = length $entry[1];
 			
-			if ($length>$maxlength)
-			{
-				$entry[1] = substr $entry[1], $forward_trim, $maxlength -$forward_trim -$reverse_trim;
-				$entry[3] = substr $entry[3], $forward_trim, $maxlength -$forward_trim -$reverse_trim;
-				printfastq($out_fh,@entry);
-			}
-			elsif ($length > $minlength)
-			{
-				$entry[1] = substr $entry[1], $forward_trim, $length -$forward_trim -$reverse_trim;
-				$entry[3] = substr $entry[3], $forward_trim, $length -$forward_trim -$reverse_trim;
-				printfastq($out_fh,@entry);
-			}
+			$entry[1] = substr $entry[1], $forward_trim, $length -$forward_trim -$reverse_trim;
+			$entry[3] = substr $entry[3], $forward_trim, $length -$forward_trim -$reverse_trim;
+			printfastq($out_fh,@entry);
+
         }
         print "done.\n";
     }
@@ -75,8 +67,6 @@ sub dir_list
   my ($dir_name)=@_;
   opendir(my $dh, $dir_name) || die "cannot open directory \"$dir_name\": $!";
   my @dir_listing = readdir $dh;
-  shift @dir_listing;
-  shift @dir_listing;
   close $dh;
   return (@dir_listing);
 }
